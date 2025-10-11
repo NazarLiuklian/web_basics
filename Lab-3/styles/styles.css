@@ -1,0 +1,17 @@
+i, em, span, b, strong {
+    color: rgb(49, 0, 128);
+    text-decoration: underline;
+}
+
+ol, ul {
+    border: 1px solid #ff0000;
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+}
+h1 { 
+    text-align: center; 
+    color: red;
+}
