@@ -1,0 +1,48 @@
+body {
+
+    *, *::before, *::after {
+  box-sizing: border-box;
+}
+
+  h1{
+    text-transform: uppercase;
+     color: green;
+      
+  }
+  
+  ul ul{
+    text-transform: uppercase
+  }
+  .highlight{
+    text-align: right;
+    border: 2px solid blue;
+    font-size: 20px;
+  }
+  p a {
+    color: magenta;
+    background-color: mistyrose;
+  }
+ .list__item {
+  color: #FF0000;
+   background-color: yellow; 
+    font-style: italic
+   
+}
+.goals-list {
+    border: 1px solid red
+}
+.bold{
+    font-weight: bold;
+     text-transform: uppercase;
+}
+
+a[href$=".pdf"] {
+  color:green;
+  font-style: italic
+}
+a{
+    color:violet;
+     font-style: none;
+}
+
+}
