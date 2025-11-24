@@ -1,0 +1,197 @@
+//homework Lek.1
+//Вивести всі види змінних з їх типами. Як мінімум мають бути об'єкт, масив, рядок, число, функція. //var varString...
+var varString = "Це рядок";
+var varNumber = 22;
+var varArray = [1, 2, 3];
+var varObject = {name: "Назар", age: 18};
+var varFunction = function() { return "Це функція"; };
+
+console.log(typeof varString);
+console.log(typeof varNumber);
+console.log(typeof varArray);
+console.log(typeof varObject);
+console.log(typeof varFunction);
+
+//Для рядка і числа поміняти значення так, щоб їх типи помінялися.
+varString = 23;
+varNumber = "Це рядок";
+
+console.log(typeof varString);
+console.log(typeof varNumber);
+
+//Порівняти між собою рядок і число з "однаковими" значеннями.
+var stringValue = "123";
+var numberValue = 123;
+
+console.log("Порівняння тільки за значенням", stringValue == numberValue);
+console.log("Порівняння за типом і значенням", stringValue === numberValue);
+
+//Простими способами зашифрувати / дешифрувати числову інформацію
+var number = 456;
+var encrypted = number.toString(16);
+console.log("Зашифроване:", encrypted);
+var decrypted = parseInt(number.toString(16), 16);
+console.log("Дешифроване:", decrypted);
+
+//homework Lek.2
+//1. Запистити код в консолі браузера/NodeJS. Яким буде результат виконання?
+var foo = 1; 
+function bar() { 
+    if (!foo) { 
+        var foo = 10; 
+    } 
+    alert(foo); 
+} 
+bar();
+//2. Обгрунтуйте будь-ласка результат виконання вищезгаданого коду.
+//3. Обгрунтуйте будь-ласка результат виконання коду.
+//var a = 1; 
+function b() { 
+    a = 10; 
+    return; 
+    function a() {} 
+} 
+b(); 
+console.log(a);
+4. //Якщо результатом виконнання коду буде число відмінне від 10, виправити помилку.  Виправити мінімальною кількістю операцій.
+
+//homework Lek.3
+// Умарні оператори:
+var a = 7;
+console.log(+a); // перетворює на число
+console.log(-ф); // змінює знак числа
+console.log(++a); // збільшує на 1
+console.log(--a); // зменшує на 1
+console.log(!true); // інвертує булеве значення
+console.log(typeof a); // повертає тип змінної
+
+// Бінарні оператори:
+console.log(15 + 7); // додавання
+console.log(20 - 8); // віднімання
+console.log(6 * 4); // множення
+console.log(18 / 3); // ділення
+console.log(17 % 5); // остача від ділення
+console.log(3 ** 4); // піднесення до степеня
+console.log(25 > 12); // більше
+console.log(8 < 15); // менше
+console.log(14 >= 14); // більше або дорівнює
+console.log(9 <= 20); // менше або дорівнює
+console.log(25 == "25"); // рівність за значенням
+console.log(30 === "30"); // рівність за типом і значенням
+console.log(12 != 7); // нестроге не дорівнює
+console.log(18 !== "18"); // строго не дорівнює
+console.log(true && false); // І
+console.log(true || false); // АБО
+
+// Тернарні оператори:
+var age = 20;
+var access = (age >= 18) ? "Доступ дозволено" : "Доступ заборонено";
+console.log(access);
+
+var score = 75;
+var grade = (score >= 90) ? "Відмінно" : (score >= 60) ? "Добре" : "Незадовільно";
+console.log(grade);
+
+var temp = 28;
+var advice = (temp > 25) ? "Тепло" : "Холодно";
+console.log(advice);
+
+//Написати скріпт використовуючи метод concat() на тему:
+		//Нехай завжди буде сонце,
+		//Нехай завжди буде небо,
+		//Нехай завжди буде мама,
+		//Нехай завжди буду я.
+var line1 = "Нехай завжди буде сонце,";
+var line2 = "Нехай завжди буде небо,";
+var line3 = "Нехай завжди буде мама,";
+var line4 = "Нехай завжди буду я.";
+
+var poem = line1.concat(" ", line2, " ", line3, " ", line4);
+
+console.log(poem);
+
+//homework Lek.ARRAYS
+// Знайти неперервний підмасив масиву , сума елементів якого є максимальною.
+var array = [2, -5, 3, 8, -2, 4, -1, 6];
+
+var maxSum = array[0];
+var currentSum = array[0];
+var start = 0;
+var end = 0;
+var tempStart = 0;
+
+for (var i = 1; i < array.length; i++) {
+    if (currentSum < 0) {
+        currentSum = array[i];
+        tempStart = i;
+    } else {
+        currentSum += array[i];
+    }
+    
+    if (currentSum > maxSum) {
+        maxSum = currentSum;
+        start = tempStart;
+        end = i;
+    }
+}
+
+var subArray = [];
+for (var j = start; j <= end; j++) {
+    subArray.push(array[j]);
+}
+
+console.log("Масив:", array);
+console.log("Підмасив з максимальною сумою:", subArray);
+console.log("Максимальна сума:", maxSum);
+// Створити функцію сумування двох дуже довгих чисел представлених строкою.
+function addLargeNumbers(num1, num2) {
+    var result = "";
+    var carry = 0;
+    var i = num1.length - 1;
+    var j = num2.length - 1;
+    
+    while (i >= 0 || j >= 0 || carry > 0) {
+        var digit1 = i >= 0 ? parseInt(num1[i]) : 0;
+        var digit2 = j >= 0 ? parseInt(num2[j]) : 0;
+        
+        var sum = digit1 + digit2 + carry;
+        carry = Math.floor(sum / 10);
+        result = (sum % 10) + result;
+        
+        i--;
+        j--;
+    }
+    
+    return result;
+}
+
+var number1 = "123456789012345678901234567890";
+var number2 = "987654321098765432109876543210";
+
+console.log("Перше число:", number1);
+console.log("Друге число:", number2);
+console.log("Сума:", addLargeNumbers(number1, number2));
+// Написати метод реалізуючий різницю двох масивів. Причому різниця має враховувати кількість однакових елементів.
+function arrayDifference(arr1, arr2) {
+    var count = 0;
+    var used = [];
+    
+    for (var i = 0; i < arr1.length; i++) {
+        for (var j = 0; j < arr2.length; j++) {
+            if (arr1[i] === arr2[j] && used.indexOf(j) === -1) {
+                count++;
+                used.push(j);
+                break;
+            }
+        }
+    }
+    
+    return count;
+}
+
+var array1 = [1, 2, 3, 4, 5, 2, 3];
+var array2 = [2, 3, 5, 6, 7, 2];
+
+console.log("Перший масив:", array1);
+console.log("Другий масив:", array2);
+console.log("Кількість однакових елементів:", arrayDifference(array1, array2));
