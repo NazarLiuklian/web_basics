@@ -77,54 +77,87 @@ var car = {
 car.setSpeedometer(200).setSpeedometer(300).getSpeedometer().clearSpeedometr();
 
 
-
 // Щодо лекції 7 (ООП в JS) завдання наступне:
 // - створити щонайменше 3 функції конструктори (класи), Можна застосовувати, навіть бажано, ES6 синтаксис
 // - проілюструвати на прикладі трьох і більше класах прототипне наслідування в JS
-class Person {
-    constructor(name, age) {
+
+// Батьківський клас
+class Animal {
+    constructor(name) {
         this.name = name;
-        this.age = age;
     }
     
-    introduce() {
-        console.log(`Привіт, мене звати ${this.name}, мені ${this.age} років`);
+    speak() {
+        console.log(`${this.name} видає звук`);
     }
 }
 
-class Car {
-    constructor(brand, model, year) {
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
+class Dog extends Animal {
+    constructor(name, breed) {
+        super(name);
+        this.breed = breed;
     }
     
-    getInfo() {
-        console.log(`${this.brand} ${this.model} ${this.year} року`);
+    speak() {
+        console.log(`${this.name} гавкає: Гав-гав!`);
+    }
+    
+    getBreed() {
+        console.log(`Порода: ${this.breed}`);
     }
 }
 
-class Book {
-    constructor(title, author, pages) {
-        this.title = title;
-        this.author = author;
-        this.pages = pages;
+class Cat extends Animal {
+    constructor(name, color) {
+        super(name);
+        this.color = color;
     }
     
-    getDescription() {
-        console.log(`"${this.title}" написана ${this.author}, ${this.pages} сторінок`);
+    speak() {
+        console.log(`${this.name} нявчить: Мяу-мяу!`);
+    }
+    
+    getColor() {
+        console.log(`Колір: ${this.color}`);
     }
 }
 
-// Приклади використання:
-var person1 = new Person("Назар", 18);
-person1.introduce();
+class Bird extends Animal {
+    constructor(name, canFly) {
+        super(name);
+        this.canFly = canFly;
+    }
+    
+    speak() {
+        console.log(`${this.name} співає: Чик-чирик!`);
+    }
+    
+    fly() {
+        if (this.canFly) {
+            console.log(`${this.name} літає`);
+        } else {
+            console.log(`${this.name} не вміє літати`);
+        }
+    }
+}
 
-var car1 = new Car("Toyota", "Camry", 2020);
-car1.getInfo();
+// Приклади використання та демонстрація прототипного наслідування:
+var dog1 = new Dog("Рекс", "Німецька вівчарка");
+dog1.speak();
+dog1.getBreed();
 
-var book1 = new Book("Кобзар", "Тарас Шевченко", 240);
-book1.getDescription();
+var cat1 = new Cat("Мурка", "Рудий");
+cat1.speak();
+cat1.getColor();
+
+var bird1 = new Bird("Кеша", true);
+bird1.speak();
+bird1.fly();
+
+console.log("\n--- Прототипне наслідування ---");
+console.log(dog1 instanceof Dog);
+console.log(dog1 instanceof Animal);
+console.log(Object.getPrototypeOf(Dog.prototype) === Animal.prototype);
 
 
 // 3. Як ви знаєте, викликавши метод toString на будь-якому обєкті, наприклад ({}).toString () отримаємо " [object Object]". ! Увага Д, чорна скринька в студію:
